@@ -1,86 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 220 25% 6%;
-    --foreground: 210 20% 95%;
-
-    --card: 220 20% 10%;
-    --card-foreground: 210 20% 95%;
-
-    --popover: 220 20% 10%;
-    --popover-foreground: 210 20% 95%;
-
-    --primary: 185 100% 45%;
-    --primary-foreground: 220 25% 6%;
-
-    --secondary: 220 15% 16%;
-    --secondary-foreground: 210 20% 85%;
-
-    --muted: 220 15% 14%;
-    --muted-foreground: 215 15% 55%;
-
-    --accent: 185 100% 45%;
-    --accent-foreground: 220 25% 6%;
-
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 20% 95%;
-
-    --border: 220 15% 18%;
-    --input: 220 15% 18%;
-    --ring: 185 100% 45%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 220 25% 8%;
-    --sidebar-foreground: 210 20% 75%;
-    --sidebar-primary: 185 100% 45%;
-    --sidebar-primary-foreground: 220 25% 6%;
-    --sidebar-accent: 220 15% 14%;
-    --sidebar-accent-foreground: 210 20% 95%;
-    --sidebar-border: 220 15% 15%;
-    --sidebar-ring: 185 100% 45%;
-
-    --success: 152 69% 45%;
-    --success-foreground: 220 25% 6%;
-    --warning: 38 92% 50%;
-    --warning-foreground: 220 25% 6%;
-
-    --chart-1: 185 100% 45%;
-    --chart-2: 152 69% 45%;
-    --chart-3: 38 92% 50%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 0 72% 51%;
-
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  }
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground antialiased;
-  }
+.glass-card {
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-@layer utilities {
-  .glow-cyan {
-    box-shadow: 0 0 20px hsl(185 100% 45% / 0.15), 0 0 60px hsl(185 100% 45% / 0.05);
-  }
-  .glow-text {
-    text-shadow: 0 0 20px hsl(185 100% 45% / 0.5);
-  }
-  .glass-card {
-    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-lg;
-  }
-  .stat-card {
-    @apply glass-card p-6 transition-all duration-300 hover:border-primary/30 hover:glow-cyan;
-  }
+:root {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --border: 240 5.9% 90%;
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
 }

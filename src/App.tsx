@@ -1,38 +1,31 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { Toaster } from "sonner";
 import Overview from "./pages/Overview";
 import Leads from "./pages/Leads";
-import Campaigns from "./pages/Campaigns";
-import Templates from "./pages/Templates";
-import Pipeline from "./pages/Pipeline";
-import Automation from "./pages/Automation";
-import SettingsPage from "./pages/Settings";
-import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 2,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Router>
         <Routes>
           <Route path="/" element={<Overview />} />
           <Route path="/leads" element={<Leads />} />
-          <Route path="/campaigns" element={<Campaigns />} />
-          <Route path="/templates" element={<Templates />} />
-          <Route path="/pipeline" element={<Pipeline />} />
-          <Route path="/automation" element={<Automation />} />
-          <Route path="/settings" element={<SettingsPage />} />
-          <Route path="*" element={<NotFound />} />
+          {/* Add more routes later: /campaigns, /pipeline, /settings */}
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+      </Router>
+      <Toaster position="top-center" richColors closeButton />
+    </QueryClientProvider>
+  );
+}
 
 export default App;
